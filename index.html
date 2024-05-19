@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Currículo Kevin K S Soares</title>
+  <style>
+    /* CSS */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    
+    header {
+      background-color: #333;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+    }
+    
+    nav {
+      background-color: #f2f2f2;
+      padding: 10px;
+      text-align: center;
+    }
+    
+    nav button {
+      background-color: #4CAF50;
+      border: none;
+      color: white;
+      padding: 10px 20px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 4px 2px;
+      cursor: pointer;
+    }
+    
+    section {
+      padding: 20px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Kevin Kline Sousa Soares</h1>
+  </header>
+  
+  <nav>
+     <!-- Criação do menu -->
+    <button onclick="showContent('sobre')">Sobre mim</button>
+    <button onclick="showContent('formacao')">Formação</button>
+    <button onclick="showContent('portfolio')">Portfólio</button>
+    <button onclick="showContent('contato')">Contato</button>
+  </nav>
+  
+  <section id="content">
+    <!-- O conteúdo será exibido aqui -->
+  </section>
+  <!-- Script para o menu -->
+  <script>
+    
+    function showContent(id) {
+      var content = document.getElementById("content");
+      
+      switch (id) {
+        case "sobre":
+          content.innerHTML = "<h2>Sobre mim</h2><p>Sou estudante de Administração de Empresas e Análise e Desenvolvimento de Sistemas. Atualmente, estou buscando uma colocação no mercado de trabalho na área de TI.</p><p>Tenho conhecimentos em programação, banco de dados e gestão de projetos. Estou sempre em busca de novos desafios e oportunidades para aplicar meus conhecimentos e habilidades.</p><p>Meu objetivo é ingressar em uma empresa onde possa contribuir com meu trabalho e aprender constantemente, visando o crescimento profissional e pessoal.</p>";
+          break;
+        case "formacao":
+          content.innerHTML = "<h2>Formação</h2><p>Universidade Federal Rural de Pernambuco - Bacharelado em Administração - Conclusão em 2024</p><p>UNINTER - Tecnólogo em Análise e Desenvolvimento de Sistemas - Conclusão em 2024</p>";;
+          break;
+        case "portfolio":
+            showPortfolio(content);
+          break;
+        case "contato":
+            showContatoContent(content);
+          break;
+      }
+    }
+    //o innerHTML não permite a inclusão de links, portanto foi necessário criar uma classe para o portfolio.
+    
+    function showPortfolio(content) {
+        var imageElement = document.createElement("img")
+        imageElement.src = "https://github.githubassets.com/assets/GitHub-Mark-ea2971cee799.png"
+        var portfolioElement = document.createElement("div");
+      var portfolioTitle = document.createElement("h2");
+      portfolioTitle.textContent = "Portfólio";
+      var portfolioText = document.createElement("p");
+      portfolioText.textContent = "Link para meu GitHub:";
+      var linkElement = document.createElement("a");
+      linkElement.href = "https://github.com/kline01";
+      linkElement.textContent = "Kline01";
+      var iframeElement = document.createElement("iframe")
+      iframeElement.src = "https://github-readme-stats.vercel.app/api/top-langs/?username=kline01&layout=compact&theme=light"
+      portfolioElement.appendChild(portfolioTitle);
+      portfolioElement.appendChild(portfolioText);
+      portfolioElement.appendChild(linkElement);
+      portfolioElement.appendChild(iframeElement)
+      content.appendChild(portfolioElement);
+
+    }
+
+    function showContatoContent(content) {
+      var contatoElement = document.createElement("div");
+      var contatoTitle = document.createElement("h2");
+      contatoTitle.textContent = "Contato";
+      var contatoForm = document.createElement("form");
+      contatoForm.innerHTML = `
+        <label for="nome">Nome:</label><br>
+        <input type="text" id="nome" name="nome"><br>
+        <label for="email">Email:</label><br>
+        <input type="email" id="email" name="email"><br>
+        <label for="mensagem">Mensagem:</label><br>
+        <textarea id="mensagem" name="mensagem"></textarea><br>
+        <input type="submit" value="Enviar">
+      `;
+      contatoElement.appendChild(contatoTitle);
+      contatoElement.appendChild(contatoForm);
+      content.appendChild(contatoElement);
+    }
+  </script>
+</body>
+</html>
